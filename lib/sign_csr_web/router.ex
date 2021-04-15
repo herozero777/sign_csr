@@ -17,12 +17,13 @@ defmodule SignCsrWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
-    get "/aoa", SignController, :index
+#    get "/aoa", SignController, :index
   end
 
   scope "/csr", SignCsrWeb do
     pipe_through(:api)
 
+    get "/healthcheck", SignController, :index
     post "/sign", SignController, :sign
   end
   # Other scopes may use custom stacks.

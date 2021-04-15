@@ -7,6 +7,12 @@ provision aux certificates in NervesKey.
 By default, the service is running on port `9000`. You can change it in config 
 if you want to.
 
+## Instructions
+To be able to sign the incoming CSR you need to place signer CA certificates in directory
+`signer_certs`. Then you need to specify it's name in config.exs without the extension.
+Make sure certificate and key file name and same and they only differ in extension. 
+Make sure extensions are as `.cert` for certificate and `.key` for key file.
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`

@@ -1,11 +1,14 @@
 defmodule SignCsrWeb.SignController do
   use SignCsrWeb, :controller
+
+  use Application
   require Logger
 
+  @otp_app Mix.Project.config()[:app]
   @build_year DateTime.utc_now().year
 
   def index(conn, _params) do
-    render( conn, "index.json", %{message: "Ws, the Sign CSR server is up and running!"})
+    render( conn, "index.json", message: "Salam, the Sign CSR server is up and running!")
   end
 
 
@@ -45,7 +48,9 @@ defmodule SignCsrWeb.SignController do
     csr = X509.CSR.from_pem!(csr_str)
 
     # Name of the Signer CA certificate & Signer CA key
-    cert_name="signer-ca-2"
+#    cert_name="signer-ca-2"
+    app_environment = Application.get_env(@otp_app, :environment)
+    cert_name = app_environment[:cert_name]
     signer_cert = File.read!("signer_certs/#{cert_name}.cert") |> X509.Certificate.from_pem!();true
     signer_key = File.read!("signer_certs/#{cert_name}.key") |> X509.PrivateKey.from_pem!();true
 
@@ -75,4 +80,8 @@ defmodule SignCsrWeb.SignController do
     end
   end
 
+  # ----- Test functions ----
+  def check_env_vars() do
+    Application.get_env(@otp_app, :environment)
+  end
 end

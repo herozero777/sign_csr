@@ -8,7 +8,7 @@ defmodule SignCsr.Application do
   def start(_type, _args) do
     children = [
       # Start the Ecto repository
-      SignCsr.Repo,
+#      SignCsr.Repo,
       # Start the Telemetry supervisor
       SignCsrWeb.Telemetry,
       # Start the PubSub system

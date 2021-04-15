@@ -1,13 +1,13 @@
 use Mix.Config
 
 # Configure your database
-config :sign_csr, SignCsr.Repo,
-  username: "db_dev",
-  password: "lolpass",
-  database: "disc_dev",
-  hostname: "localhost",
-  show_sensitive_data_on_connection_error: true,
-  pool_size: 10
+#config :sign_csr, SignCsr.Repo,
+#  username: "db_dev",
+#  password: "lolpass",
+#  database: "disc_dev",
+#  hostname: "localhost",
+#  show_sensitive_data_on_connection_error: true,
+#  pool_size: 10
 
 # For development, we disable any cache and enable
 # debugging and code reloading.
